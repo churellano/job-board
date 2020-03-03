@@ -7,10 +7,15 @@
     min-height: 10vh;
 }
 
-.navbar-links {
+.navbar-list {
     width: 50%;
     display: flex;
     justify-content: space-around;
     align-items: center;
     list-style: none;
+}
+
+.navbar-links {
+    color: rgb(17, 95, 121);
+    text-decoration: none;
 }
