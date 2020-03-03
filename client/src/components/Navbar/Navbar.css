@@ -1,0 +1,16 @@
+.navbar {
+    display: flex;
+    background-color: lightgrey;
+    justify-content: space-around;
+    align-items: center;
+    color: black;
+    min-height: 10vh;
+}
+
+.navbar-links {
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+}
