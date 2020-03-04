@@ -13,6 +13,7 @@
     justify-content: space-around;
     align-items: center;
     list-style: none;
+    font-family: 'Roboto', sans-serif;
 }
 
 .navbar-links {
