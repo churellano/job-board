@@ -1,6 +1,9 @@
 .job-preview {
+    display: flex;
+    flex-direction: column;
     font-family: 'Roboto', sans-serif;
     border-style: solid;
     width: 20%;
     max-height: 10%;
+    justify-content: center;
 }

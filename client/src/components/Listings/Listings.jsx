@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import JobPreview from './JobPreview';
+import './Listings.css'
 
-const data1 = {
+var data1 = {
   position: 'Software Engineer intern',
   organization: 'Amazon',
   location: 'Vancouver, BC',

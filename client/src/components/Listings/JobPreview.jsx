@@ -10,11 +10,12 @@ class JobPreview extends Component {
   render() {
     return (
       <div className="job-preview">
-        <h2>job preview</h2>
+        {/* <h2>job preview</h2> */}
         <h3>{this.props.data.position}</h3>
         <p>{this.props.data.organization}</p>
         <p>{this.props.data.location}</p>
-        <p>{this.props.data.duration.join(',')} months</p>
+        <p>{this.props.data.duration.join(', ')} months</p>
+        {/* <p>{this.props.data.deadline}</p> */}
       </div>
     );
   }
