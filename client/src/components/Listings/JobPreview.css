@@ -3,7 +3,20 @@
     flex-direction: column;
     font-family: 'Roboto', sans-serif;
     border-style: solid;
-    width: 20%;
-    max-height: 10%;
+    width: 25%;
     justify-content: center;
+}
+
+.summary {
+    float: left;
+    text-align: left;
+    border-style: dotted;
+    width: 50%;
+}
+
+.deadline {
+    text-align: right;
+    border-style: dotted;
+    float: right;
+    width: 25%;
 }
