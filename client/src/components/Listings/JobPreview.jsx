@@ -1,6 +1,21 @@
 import React, { Component } from 'react';
 import './JobPreview.css';
-import Paper from '@material-ui/core/Button';
+
+import { makeStyles } from '@material-ui/core/styles'
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import CardActions from '@material-ui/core/CardActions';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+
+const styles = {
+  root: {
+    display: 'block',
+    width: '30vw',
+    margin: '8vh',
+    padding: '8vh',
+  }
+};
 
 class JobPreview extends Component {
   constructor() {
@@ -9,36 +24,39 @@ class JobPreview extends Component {
   }
 
   render() {
+    const classes = makeStyles(styles);
+
     let daysLeft = Math.floor((this.props.data.deadline.getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24));
     let deadlineText = (daysLeft) => {
       if (daysLeft > 1) {
         return String(daysLeft + ' days left');
-      } else if (daysLeft == 1) {
+      } else if (daysLeft === 1) {
         return String(daysLeft + ' day left');
-      } else if (daysLeft == 0) {
+      } else if (daysLeft === 0) {
         return 'Deadline today';
       }
     }
+
     return (
-      <Paper variant='outlined'>
-      <div className='job-preview'>
-        <div className='job-summary'>
-          <div className='job-info'>
-            <h3>{this.props.data.position}</h3>
-            <p>{this.props.data.organization}</p>
-            <p>{this.props.data.location}</p>
-            <p>{this.props.data.duration.join(', ')} months</p>
-          </div>
-          <div className='job-deadline'>
-            <p>{deadlineText(daysLeft)}</p>
-          </div>
+      <Card className={classes.root} variant='outlined'>
+        <div className='job-preview'>
+          <CardContent className='job-summary'>
+            <div className='job-info'>
+              <Typography variant="h6">{this.props.data.position}</Typography>
+              <Typography variant="body2">{this.props.data.organization}</Typography>
+              <Typography variant="body2">{this.props.data.location}</Typography>
+              <Typography variant="body2">{this.props.data.duration.join(', ')} months</Typography>
+            </div>
+            <div className='job-deadline'>
+              <Typography variant="body2">{deadlineText(daysLeft)}</Typography>
+            </div>
+          </CardContent>
+          <CardActions>
+            <Button size="small"> Apply </Button>
+            <Button size="small"> Favourite </Button>
+          </CardActions>
         </div>
-        <div className='job-action-list'>
-          <button> Apply </button>
-          <button> Favourite </button>
-        </div>
-      </div>
-      </Paper>
+      </Card>
     );
   }
 }
