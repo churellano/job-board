@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './JobPreview.css';
+import Paper from '@material-ui/core/Button';
 
 class JobPreview extends Component {
   constructor() {
@@ -9,7 +10,17 @@ class JobPreview extends Component {
 
   render() {
     let daysLeft = Math.floor((this.props.data.deadline.getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24));
+    let deadlineText = (daysLeft) => {
+      if (daysLeft > 1) {
+        return String(daysLeft + ' days left');
+      } else if (daysLeft == 1) {
+        return String(daysLeft + ' day left');
+      } else if (daysLeft == 0) {
+        return 'Deadline today';
+      }
+    }
     return (
+      <Paper variant='outlined'>
       <div className='job-preview'>
         <div className='job-summary'>
           <div className='job-info'>
@@ -19,7 +30,7 @@ class JobPreview extends Component {
             <p>{this.props.data.duration.join(', ')} months</p>
           </div>
           <div className='job-deadline'>
-            <p>{daysLeft} day(s) left</p>
+            <p>{deadlineText(daysLeft)}</p>
           </div>
         </div>
         <div className='job-action-list'>
@@ -27,6 +38,7 @@ class JobPreview extends Component {
           <button> Favourite </button>
         </div>
       </div>
+      </Paper>
     );
   }
 }
