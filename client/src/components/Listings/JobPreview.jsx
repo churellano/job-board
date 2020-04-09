@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './JobPreview.css';
-import Paper from '@material-ui/core/Button';
+import Card from '@material-ui/core/Card';
 
 class JobPreview extends Component {
   constructor() {
@@ -20,7 +20,7 @@ class JobPreview extends Component {
       }
     }
     return (
-      <Paper variant='outlined'>
+      <Card variant='outlined'>
         <div className='job-preview'>
           <div className='job-summary'>
             <div className='job-info'>
@@ -38,7 +38,7 @@ class JobPreview extends Component {
             <button> Favourite </button>
           </div>
         </div>
-      </Paper>
+      </Card>
     );
   }
 }
