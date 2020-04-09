@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import './JobPreview.css';
-import Card from '@material-ui/core/Card';
+// import Card from '@material-ui/core/Card';
+import { Button, Card } from "react-bulma-components";
+
+
 
 class JobPreview extends Component {
   constructor() {
@@ -9,7 +12,8 @@ class JobPreview extends Component {
   }
 
   render() {
-    let daysLeft = Math.floor((this.props.data.deadline.getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24));
+    let msPerDay = 1000 * 60 * 60 * 24;
+    let daysLeft = Math.floor((this.props.data.deadline.getTime() - new Date().getTime()) / msPerDay);
     let deadlineText = (daysLeft) => {
       if (daysLeft > 1) {
         return String(daysLeft + ' days left');
@@ -34,8 +38,8 @@ class JobPreview extends Component {
             </div>
           </div>
           <div className='job-action-list'>
-            <button> Apply </button>
-            <button> Favourite </button>
+            <Button> Apply </Button>
+            <Button> Favourite </Button>
           </div>
         </div>
       </Card>
