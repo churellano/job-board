@@ -23,6 +23,7 @@ class JobPreview extends Component {
         return 'Deadline today';
       }
     }
+
     return (
       // <Card variant='outlined'>
       //   <div className='job-preview'>

@@ -37,7 +37,6 @@ class Listings extends Component {
   render() {
     return (
       <div className="listings-container">
-        <h1>jobs table here</h1>
         <JobPreview data={data1}/>
         <JobPreview data={data2}/>
         <JobPreview data={data3}/>
