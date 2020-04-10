@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './JobPreview.css';
-// import Card from '@material-ui/core/Card';
-import { Button, Card } from "react-bulma-components";
+import 'react-bulma-components/dist/react-bulma-components.min.css';
+import { Card } from 'react-bulma-components';
 
 
 
@@ -24,24 +24,37 @@ class JobPreview extends Component {
       }
     }
     return (
-      <Card variant='outlined'>
-        <div className='job-preview'>
-          <div className='job-summary'>
-            <div className='job-info'>
-              <h3>{this.props.data.position}</h3>
-              <p>{this.props.data.organization}</p>
-              <p>{this.props.data.location}</p>
-              <p>{this.props.data.duration.join(', ')} months</p>
-            </div>
-            <div className='job-deadline'>
-              <p>{deadlineText(daysLeft)}</p>
-            </div>
-          </div>
-          <div className='job-action-list'>
-            <Button> Apply </Button>
-            <Button> Favourite </Button>
-          </div>
+      // <Card variant='outlined'>
+      //   <div className='job-preview'>
+      //     <div className='job-summary'>
+      //       <div className='job-info'>
+      //         <h3>{this.props.data.position}</h3>
+      //         <p>{this.props.data.organization}</p>
+      //         <p>{this.props.data.location}</p>
+      //         <p>{this.props.data.duration.join(', ')} months</p>
+      //       </div>
+      //       <div className='job-deadline'>
+      //         <p>{deadlineText(daysLeft)}</p>
+      //       </div>
+      //     </div>
+      //     <div className='job-action-list'>
+      //       <Button> Apply </Button>
+      //       <Button> Favourite </Button>
+      //     </div>
+      //   </div>
+      // </Card>
+      <Card>
+        <div className='card-content'>
+          <p className='title is-size-6 has-text-left'> {this.props.data.position} </p>
+          <p className='has-text-left'>{this.props.data.organization}</p>
+          <p className='has-text-left'>{this.props.data.location}</p>
+          <p className='has-text-left'>{this.props.data.duration.join(', ')} months</p>
+          <p>{deadlineText(daysLeft)}</p>
         </div>
+        <footer className='card-footer'>
+          <a className='card-footer-item'> Apply </a>
+          <a className='card-footer-item'> Favourite </a>
+        </footer>
       </Card>
     );
   }

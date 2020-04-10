@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import JobPreview from './JobPreview';
-import './Listings.css'
+import 'react-bulma-components/dist/react-bulma-components.min.css';
+import { Column } from 'react-bulma-components';
+import './Listings.css';
 
 var date = new Date(2020, 4, 20, 11, 59);
 
@@ -40,6 +42,18 @@ class Listings extends Component {
         <JobPreview data={data2}/>
         <JobPreview data={data3}/>
       </div>
+      // <div class='columns'>
+      //   <div class="column">
+      //     First column
+      //   </div>
+      //   <div class="column">
+      //     Second column
+      //   </div>
+      //   <div class="column">
+      //     Third column
+      //   </div>
+
+      // </div>
     );
   }
 }
