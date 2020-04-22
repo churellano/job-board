@@ -36,23 +36,22 @@ var data3= {
 class Listings extends Component {
   render() {
     return (
-      <div className="listings-container">
-        <JobPreview data={data1}/>
-        <JobPreview data={data2}/>
-        <JobPreview data={data3}/>
+      <div class='columns'>
+        <div class="column">
+          First column
+        </div>
+        <div class="column is-one-fifth">
+          Second column
+        </div>
+        <div class="column is-one-quarter">
+          <JobPreview data={data1}/>
+          <JobPreview data={data2}/>
+          <JobPreview data={data3}/>
+        </div>
+        <div class="column">
+          Fourth column
+        </div>
       </div>
-      // <div class='columns'>
-      //   <div class="column">
-      //     First column
-      //   </div>
-      //   <div class="column">
-      //     Second column
-      //   </div>
-      //   <div class="column">
-      //     Third column
-      //   </div>
-
-      // </div>
     );
   }
 }
