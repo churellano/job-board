@@ -6,29 +6,8 @@ import 'react-bulma-components/dist/react-bulma-components.min.css';
 class Navbar extends Component {
 
   render() {
-    return (
-      // <nav className='navbar'>
-      //     <h3> co-Operate </h3>
-      //     <ul className='navbar-list'>
-      //       <Link className='navbar-links' to='/'>
-      //         <li>Home</li>
-      //       </Link>
-      //       <Link className='navbar-links' to='/profile'>
-      //         <li>Profile</li>
-      //       </Link>
-      //       <Link className='navbar-links' to='/listings'>
-      //         <li>Listings</li>
-      //       </Link> 
-      //     </ul>
-      // </nav>
-      // <nav className='navbar'>
-      //   <div className='navbar-brand'>
-      //     logo
-      //   </div>
-        
-      // </nav>
+    return (        
       <nav className='navbar' role='navigation' aria-label='main navigation'>
-
         <div className='navbar-brand'>
           <a class="navbar-item" href="https://bulma.io">
             <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28"/  >
@@ -39,10 +18,17 @@ class Navbar extends Component {
             <span aria-hidden="true"></span>
           </a>
         </div>
-
         <div className='navbar-menu'> 
           <div className='navbar-start'>
-
+            <Link class='navbar-item' to='/'>
+              Home
+            </Link>
+            <Link class='navbar-item' to='/profile'>
+              Profile
+            </Link>
+            <Link class='navbar-item' to='/listings'>
+              Listings
+            </Link>
           </div>
           <div className='navbar-end'>
             
