@@ -4,7 +4,6 @@ import 'react-bulma-components/dist/react-bulma-components.min.css';
 // import './Navbar.css';
 
 class Navbar extends Component {
-
   render() {
     return (        
       <nav className='navbar' role='navigation' aria-label='main navigation'>
@@ -34,7 +33,6 @@ class Navbar extends Component {
             
           </div>
         </div>
-
       </nav>
     );
   }

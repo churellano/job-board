@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import JobPreview from './JobPreview';
 import 'react-bulma-components/dist/react-bulma-components.min.css';
-import { Column } from 'react-bulma-components';
+// import { Column } from 'react-bulma-components';
 import './Listings.css';
 
 var date = new Date(2020, 4, 20, 11, 59);
