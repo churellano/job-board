@@ -6,32 +6,32 @@ import './Listings.css';
 
 var date = new Date(2020, 4, 20, 11, 59);
 
-var data1 = {
-  position: 'Software Engineer intern',
-  organization: 'Amazon',
-  location: 'Vancouver, BC',
-  semester: 'Summer 2020',
-  duration: [4, 8],
-  deadline: date
-};
-
-var data2 = {
-  position: 'QA Analyst',
-  organization: 'Microsoft',
-  location: 'Vancouver, BC',
-  semester: 'Summer 2020',
-  duration: [8, 12],
-  deadline: date
-};
-
-var data3= {
-  position: 'Business Analyst intern',
-  organization: 'Royal Bank of Canada',
-  location: 'Toronto, ON',
-  semester: 'Summer 2020',
-  duration: [8, 12, 16],
-  deadline: date
-};
+var data = [
+  {
+    position: 'Software Engineer intern',
+    organization: 'Amazon',
+    location: 'Vancouver, BC',
+    semester: 'Summer 2020',
+    duration: [4, 8],
+    deadline: date
+  },
+  {
+    position: 'QA Analyst',
+    organization: 'Microsoft',
+    location: 'Vancouver, BC',
+    semester: 'Summer 2020',
+    duration: [8, 12],
+    deadline: date
+  },
+  {
+    position: 'QA Analyst',
+    organization: 'Microsoft',
+    location: 'Vancouver, BC',
+    semester: 'Summer 2020',
+    duration: [8, 12],
+    deadline: date
+  }
+];
 
 class Listings extends Component {
   render() {
@@ -40,16 +40,17 @@ class Listings extends Component {
         <div class="column">
           First column
         </div>
-        <div class="column is-one-fifth">
-          Second column
+        <div class="column">
+          {data.map(jobData => <JobPreview data={jobData}></JobPreview>)}
         </div>
-        <div class="column is-one-quarter">
-          <JobPreview data={data1}/>
-          <JobPreview data={data2}/>
-          <JobPreview data={data3}/>
+        <div class="column">
+          Third column
         </div>
         <div class="column">
           Fourth column
+        </div>
+        <div class="column">
+          Fifth column
         </div>
       </div>
     );

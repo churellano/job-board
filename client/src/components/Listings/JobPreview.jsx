@@ -4,7 +4,6 @@ import 'react-bulma-components/dist/react-bulma-components.min.css';
 import { Card } from 'react-bulma-components';
 
 
-
 class JobPreview extends Component {
   constructor() {
       super();
