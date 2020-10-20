@@ -8,7 +8,7 @@ class Navbar extends Component {
     return (        
       <nav className='navbar' role='navigation' aria-label='main navigation'>
         <div className='navbar-brand'>
-          <a class="navbar-item" href="https://bulma.io">
+          <a className="navbar-item" href="https://bulma.io">
             <img src="https://bulma.io/images/bulma-logo.png" alt="logo" width="112" height="28"/  >
           </a>
           <a role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -19,14 +19,11 @@ class Navbar extends Component {
         </div>
         <div className='navbar-menu'> 
           <div className='navbar-start'>
-            <Link class='navbar-item' to='/'>
+            <Link className='navbar-item' to='/'>
               Home
             </Link>
-            <Link class='navbar-item' to='/profile'>
-              Profile
-            </Link>
-            <Link class='navbar-item' to='/listings'>
-              Listings
+            <Link className='navbar-item' to='/login'>
+              Login
             </Link>
           </div>
           <div className='navbar-end'>
