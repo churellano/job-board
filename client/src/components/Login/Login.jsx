@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import './Login.css';
-import { API_URL } from '../../constants';
+import { API, USER_ACCOUNTS_API } from '../../constants';
 import store from 'store';
 import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
-import { throttle, debounce } from "lodash";
+import { debounce } from "lodash";
 
 // Example POST method implementation:
 async function postData(url = '', data = {}) {
@@ -64,13 +64,15 @@ class Login extends Component {
       contactEmail: '',
       contactPhone: '',
       login: true,
-      passwordsMatch: false
+      passwordsMatch: false,
+      isUsernameUnique: null,
+      isUsernameFormTouched: false
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
     this.handleSignup = this.handleSignup.bind(this);
     this.toggleView = this.toggleView.bind(this);
-    this.isUserNameUnique = debounce(this.isUserNameUnique, 500);
+    this.isUsernameUnique = debounce(this.isUsernameUnique, 500);
   }
 
   isLoggedIn() {
@@ -81,8 +83,9 @@ class Login extends Component {
     const { name, value } = event.target;
     // console.log(name, value);
     this.setState({ [name]: value }, () => {
-      if (name === 'newUsername') {
-        this.isUserNameUnique()
+      if (name === 'newUsername' && value) {
+        this.setState(prevState => ({ isUsernameFormTouched: true }));
+        this.isUsernameUnique();
         // this.setState(prevState => ({ isUserNameUnique: this.isUserNameUnique() }));
       } else if (name === 'password' || name === 'confirmPassword') {
         this.setState(prevState => ({ passwordsMatch: this.passwordsMatch() }));
@@ -92,7 +95,7 @@ class Login extends Component {
 
   handleLogin(event) {
     alert('A username was submitted: ' + this.state.existingUsername);
-    postData(API_URL + 'login', {
+    postData(API + 'login', {
       username: this.state.existingUsername,
       password: this.state.existingPassword
     }).then(response => {
@@ -109,7 +112,18 @@ class Login extends Component {
 
   handleSignup(event) {
     alert('A username was submitted: ' + this.state.existingUsername);
-    postData(API_URL + 'register', {
+
+    if (!this.state.isUsernameUnique) {
+      alert('ERROR: Username is already taken.');
+      return;
+    }
+
+    if (!this.state.passwordsMatch) {
+      alert('ERROR: Passwords do not match.');
+      return;
+    }
+
+    postData(USER_ACCOUNTS_API + 'register', {
         firstName: this.state.firstName,
         lastName: this.state.lastName,
         username: this.state.existingUsername,
@@ -140,8 +154,17 @@ class Login extends Component {
     return this.state.existingPassword === this.state.confirmPassword;
   }
 
-  isUserNameUnique() {
-    getData(API_URL + 'UserAccounts' + '/' + this.state.newUsername).then(response => console.log(response));
+  isUsernameUnique() {
+    getData(USER_ACCOUNTS_API + 'username/' + this.state.newUsername).then(response => {
+      console.log(response);
+      if (response.body) {
+        this.setState(prevState => ({ isUsernameUnique: false }));
+        console.log('not unique', this.state);
+      } else {
+        this.setState(prevState => ({ isUsernameUnique: true }));
+        console.log('unique', this.state);
+      }
+    });
   }
 
   render() {
@@ -172,7 +195,9 @@ class Login extends Component {
         confirmPassword: this.state.confirmPassword,
         roleId: this.state.roleId,
         contactEmail: this.state.contactEmail,
-        contactPhone: this.state.contactPhone
+        contactPhone: this.state.contactPhone,
+        isUsernameUnique: this.state.isUsernameUnique,
+        isUsernameFormTouched: this.state.isUsernameFormTouched
       };
       form = <SignupForm {...props} />
       buttonMessage = 'Login instead';
