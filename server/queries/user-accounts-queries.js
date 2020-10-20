@@ -46,10 +46,14 @@ const getUserAccountByUsername = async (username, callback) => {
   try {
     client = await pool.connect();
     const userAccountQuery = await client.query('SELECT * FROM UserAccount WHERE Username = $1', [username]);
-    console.log('here', userAccountQuery.rows);
-    callback(null, userAccountQuery.rows);
+    console.log('here', userAccountQuery.rows[0]);
+    if (userAccountQuery.rows[0] == null) {
+      throw new Error('User with the provided username was not found.');
+    }
+    console.log('success callback');
+    callback(null, userAccountQuery.rows[0]);
   } catch (error) {
-    console.log('here2');
+    console.log('here2', error);
     callback(error, null);
   } finally {
     console.log('here3');
