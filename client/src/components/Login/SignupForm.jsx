@@ -14,6 +14,15 @@ export default class SignupForm extends Component {
   }
 
   render() {
+    let usernameMessage;
+    if (this.props.isUsernameUnique && this.props.isUsernameFormTouched && this.props.username) {
+      usernameMessage = <p className="help is-success">Username is available.</p>;
+    } else if (!this.props.isUsernameUnique && this.props.isUsernameFormTouched && this.props.username) {
+      usernameMessage = <p className="help is-danger">Username is already taken.</p>;
+    } else {
+      usernameMessage = null;
+    }
+
     return (
       <form onSubmit={this.props.handleSignup}>
         
@@ -41,6 +50,7 @@ export default class SignupForm extends Component {
                 <i className="fas fa-user"></i>
               </span>
             </div>
+            { usernameMessage }
           </div>
           <div className="field">
             <label className="label">Role</label>
