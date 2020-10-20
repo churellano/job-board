@@ -10,7 +10,7 @@ CREATE TABLE UserAccount (
   LastName varchar(255) NOT NULL,
 
   ContactEmail varchar(255) UNIQUE NOT NULL,
-	ContactPhone varchar(255) NULL,
+	ContactPhone varchar(255) UNIQUE NULL,
 
   CONSTRAINT FK_UserAccount_Role FOREIGN KEY (RoleId) REFERENCES Role(Id)
 ); 
