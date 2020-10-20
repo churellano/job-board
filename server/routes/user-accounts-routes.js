@@ -35,9 +35,10 @@ router.get('/username/:username', function(req, res) {
   const username = req.params.username;
   userAccountsDb.getUserAccountByUsername(username, function(err, result) {
     if (err || !result) {
-      res.status(400).send(err);
+      console.log('err', err);
+      res.status(400).send({ error: err.message });
     } else {
-      res.status(200).send(result);
+      res.status(200).send({ body: result });
     }
   });
 });
