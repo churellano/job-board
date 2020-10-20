@@ -4,19 +4,20 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.9.9",
-    "bulma": "^0.8.1",
+    "bulma": "^0.9.1",
     "material-ui": "^0.20.2",
     "react": "^16.13.1",
-    "react-bulma-components": "^3.2.0",
+    "react-bulma-components": "^3.4.0",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "0.9.5",
+    "store": "^2.0.12",
     "typeface-roboto": "0.0.75",
     "webfontloader": "^1.6.28"
   },
   "devDependencies": {},
   "scripts": {
-    "start": "react-scripts start",
+    "start": "set PORT=3001 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
