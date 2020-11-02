@@ -1,19 +1,61 @@
 var express = require('express');
 var router = express.Router();
 
-const jobStatusesRouter = require('./job-statuses-routes');
-const userAccountsRouter = require('./user-accounts-routes');
-const loginRouter = require('./login');
+const companiesRouter = require('./company-routes');
+const countriesRouter = require('./country-routes');
+const employmentStatusesRouter = require('./employment-status-routes');
+const facultiesRouter = require('./faculty-routes');
+const jobStatusesRouter = require('./job-status-routes');
+const jobsRouter = require('./job-routes');
+const provincesRouter = require('./province-routes');
+const rolesRouter = require('./role-routes');
+const semestersRouter = require('./semester-routes');
+const statesRouter = require('./state-routes');
+const studentsRouter = require('./student-routes');
+const userAccountsRouter = require('./user-account-routes');
+
+// const loginRouter = require('./login');
+
 const SHA256 = require("crypto-js/sha256");
-const userAccountsDb = require('../queries/user-accounts-queries');
+const userAccountsDb = require('../queries/user-account-queries');
 
 /* GET home page. */
 router.get('/', function(req, res) {
   res.render('home', { user: req.user });
 });
 
+// Company routes
+router.use('/Companies', companiesRouter);
+
+// Country routes
+router.use('/Countries', countriesRouter);
+
+// Employment Statuses routes
+router.use('/EmploymentStatuses', employmentStatusesRouter);
+
+// Faculty routes
+router.use('/Faculties', facultiesRouter);
+
 // Status routes
 router.use('/JobStatuses', jobStatusesRouter);
+
+// Job routes
+router.use('/Jobs', jobsRouter);
+
+// Province routes
+router.use('/Provinces', provincesRouter);
+
+// Role routes
+router.use('/Roles', rolesRouter);
+
+// Semester routes
+router.use('/Semesters', semestersRouter);
+
+// State routes
+router.use('/States', statesRouter);
+
+// Students routes
+router.use('/Students', studentsRouter);
 
 // UserAccount routes
 router.use('/UserAccounts', userAccountsRouter);
@@ -31,7 +73,7 @@ const jwt = require('jsonwebtoken');
 
 router.post('/register', async (req, res) => {
   const { roleId, username, password, firstName, lastName, contactEmail, contactPhone } = req.body;
-  // console.log(req.body);
+  console.log(req.body);
 
   // authentication will take approximately 13 seconds
   // https://pthree.org/wp-content/uploads/2016/06/bcrypt.png
@@ -50,13 +92,17 @@ router.post('/register', async (req, res) => {
     };
 
     userAccountsDb.post(newUserAccount, function(err, result) {
+      console.log(newUserAccount);
+      if (err || !result) {
+        throw err;
+      }
       console.log('RESULT', result);
       res.status(200).send({ username });
     })
   } catch (error) {
     console.log(error);
     res.status(400).send({
-      error: 'req body should take the form { roleId, username, password, firstName, lastName, contactEmail, contactPhone }',
+      error: error.message,
     });
   }
 });
@@ -81,7 +127,7 @@ router.post('/login', (req, res) => {
       };
 
       /** assigns payload to req.user */
-      req.login(payload, {session: false}, (error) => {
+      req.login(payload, { session: false }, (error) => {
 
         if (error) {
           res.status(400).send({ error });
