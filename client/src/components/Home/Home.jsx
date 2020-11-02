@@ -1,13 +1,22 @@
 import React, { Component } from 'react';
 import './Home.css';
-// import Button from '@material-ui/core/Button';
+import Navbar from '../Navbar/Navbar';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Profile from '../Profile/Profile';
+import Jobs from '../Jobs/Jobs';
 
 class Home extends Component {
   render() {
     return (
-      <div className="Home">
-        <h1 className='text'> Home page </h1>
-      </div>
+      <Router>
+        <div className="Home">
+          <Navbar className='navbar'/>
+          <Switch>
+            <Route path='/jobs' component={Jobs} />
+            <Route path='/profile' component={Profile} />
+          </Switch>
+        </div>
+      </Router>
     );
   }
 }

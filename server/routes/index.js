@@ -37,6 +37,10 @@ router.use('/EmploymentStatuses', employmentStatusesRouter);
 router.use('/Faculties', facultiesRouter);
 
 // Status routes
+// JobStatus routes
+router.use('/Jobs', jobsRouter);
+
+// JobStatus routes
 router.use('/JobStatuses', jobStatusesRouter);
 
 // Job routes

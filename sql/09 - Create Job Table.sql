@@ -12,7 +12,7 @@ CREATE TABLE Job (
 	City varchar(255) NOT NULL,
 	ProvinceId int NULL,
 	StateId int NULL,
-	Region varchar(255),
+	Region varchar(255) NULL,
 	CountryId int NOT NULL,
 
 	TargetFacultyId int NULL,

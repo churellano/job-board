@@ -5,6 +5,7 @@ import store from 'store';
 import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
 import { debounce } from "lodash";
+import { withRouter } from 'react-router-dom';
 
 // Example POST method implementation:
 async function postData(url = '', data = {}) {
@@ -25,7 +26,7 @@ async function postData(url = '', data = {}) {
   return response.json(); // parses JSON response into native JavaScript objects
 }
 
-// Example POST method implementation:
+// Example GET method implementation:
 async function getData(url = '') {
   // Default options are marked with *
   const response = await fetch(url, {
@@ -50,7 +51,8 @@ const Roles = {
 }
 
 class Login extends Component {
-  constructor() {
+  constructor(props) {
+    // console.log(props);
     super();
     this.state = {
       existingUsername: '',
@@ -66,7 +68,8 @@ class Login extends Component {
       login: true,
       passwordsMatch: false,
       isUsernameUnique: null,
-      isUsernameFormTouched: false
+      isUsernameFormTouched: false,
+      isLoggedIn: props.isLoggedIn
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
@@ -76,7 +79,7 @@ class Login extends Component {
   }
 
   isLoggedIn() {
-    return !!store.get('loggedIn');
+    return !!store.get('isLoggedIn');
   }
 
   handleChange(event) {
@@ -100,7 +103,8 @@ class Login extends Component {
       password: this.state.existingPassword
     }).then(response => {
         if (response.username) {
-          store.set('loggedIn', true);
+          store.set('isLoggedIn', true);
+          console.log(this.props);
           this.props.history.push('/home')
         } else if (response.error) {
           console.error('ERROR AT LOGIN: ', response.error);
@@ -134,7 +138,7 @@ class Login extends Component {
     }).then(response => {
         console.log(response);
         if (response.username) {
-          store.set('loggedIn', true);
+          store.set('isLoggedIn', true);
           this.props.history.push('/home')
         } else if (response.error) {
           console.error('ERROR AT LOGIN: ', response.error);
@@ -224,4 +228,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default withRouter(Login);

@@ -19,11 +19,11 @@ class Navbar extends Component {
         </div>
         <div className='navbar-menu'> 
           <div className='navbar-start'>
-            <Link className='navbar-item' to='/'>
-              Home
+            <Link className='navbar-item' to='/jobs'>
+              Jobs
             </Link>
-            <Link className='navbar-item' to='/login'>
-              Login
+            <Link className='navbar-item' to='/profile'>
+              Profile
             </Link>
           </div>
           <div className='navbar-end'>
