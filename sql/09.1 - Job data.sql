@@ -1,0 +1,2 @@
+INSERT INTO job(StartSemesterId, StartYear, MaximumLength, Deadline, Address, City, ProvinceId, CountryId, TargetFacultyId, CompanyId, Title, Description, ContactName, ContactSalutation, ContactEmail)
+VALUES (1, 2020, 4, '2020-12-31', '8888 University Drive', 'Burnaby', 2, 127, 1, 1, 'Research Assistant', 'do research', 'Bill Nye', 'Dr.', 'testcompany@gmail.com');
