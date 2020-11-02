@@ -123,11 +123,11 @@ class Login extends Component {
       return;
     }
 
-    postData(USER_ACCOUNTS_API + 'register', {
+    postData(API + 'register', {
         firstName: this.state.firstName,
         lastName: this.state.lastName,
-        username: this.state.existingUsername,
-        password: this.state.existingPassword,
+        username: this.state.newUsername,
+        password: this.state.newPassword,
         roleId: this.state.roleId,
         contactEmail: this.state.contactEmail,
         contactPhone: this.state.contactPhone,
@@ -149,9 +149,10 @@ class Login extends Component {
   }
 
   passwordsMatch() {
-    console.log('passwordsMatch', this.state.existingPassword === this.state.confirmPassword);
+    console.log(this.state.newPassword)
+    console.log('passwordsMatch', this.state.newPassword === this.state.confirmPassword);
 
-    return this.state.existingPassword === this.state.confirmPassword;
+    return this.state.newPassword === this.state.confirmPassword;
   }
 
   isUsernameUnique() {
