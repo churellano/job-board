@@ -5,7 +5,7 @@ const JWTStrategy = passportJWT.Strategy;
 const bcrypt = require('bcrypt');
 
 // const { secret } = require('./keys');
-const userAccountsDb = require('../queries/user-accounts-queries');
+const userAccountsDb = require('../queries/user-account-queries');
 
 // const UserModel = require('./models/user');
 
@@ -15,7 +15,7 @@ module.exports = function(passport) {
     usernameField: 'username',
     passwordField: 'password'
   }, async (username, password, done) => {
-    userAccountsDb.getUserAccountByUsername(username, async function(err, user) {
+    userAccountsDb.getByUsername(username, async function(err, user) {
       if (err) { 
         return done(err); 
       }
