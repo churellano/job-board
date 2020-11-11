@@ -1,4 +1,4 @@
-INSERT INTO Faculty (Name)
+INSERT INTO "Faculty" ("Name")
 VALUES
 ('Applied Sciences'),
 ('Arts and Social Sciences'),

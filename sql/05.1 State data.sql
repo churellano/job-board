@@ -53,8 +53,9 @@
 -- ('WI', 'Wisconsin'),
 -- ('WY', 'Wyoming');
 
-INSERT into State (Abbreviation, Name)
-values ('AL', 'Alabama'),
+INSERT into "State" ("Abbreviation", "Name")
+values 
+('AL', 'Alabama'),
 ('AK', 'Alaska'),
 ('AL', 'Alabama'),
 ('AZ', 'Arizona'),
