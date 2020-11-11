@@ -25,9 +25,10 @@ module.exports = function(passport) {
       }
 
       const hashed = await bcrypt.hash(SHA256(password).toString(), 10);
-      console.log(hashed);
+      console.log('hashed: ', hashed);
+      console.log('user: ', user);
 
-      bcrypt.compare(SHA256(password).toString(), user.password).then(response => {
+      bcrypt.compare(SHA256(password).toString(), user.Password).then(response => {
         if (response !== true) {
           console.log('Password is invalid.');
           return done('Password is invalid.', false, { message: 'Password is invalid.' });
