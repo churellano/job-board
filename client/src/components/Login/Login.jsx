@@ -102,10 +102,12 @@ class Login extends Component {
       username: this.state.existingUsername,
       password: this.state.existingPassword
     }).then(response => {
+        console.log(response);
         if (response.username) {
           store.set('isLoggedIn', true);
           console.log(this.props);
           this.props.history.push('/home')
+          console.log('after history: ', this.props);
         } else if (response.error) {
           console.error('ERROR AT LOGIN: ', response.error);
           alert(response.error);
@@ -137,9 +139,10 @@ class Login extends Component {
         contactPhone: this.state.contactPhone,
     }).then(response => {
         console.log(response);
-        if (response.username) {
+        if (response.Username) {
           store.set('isLoggedIn', true);
           this.props.history.push('/home')
+          console.log('after history: ', this.props);
         } else if (response.error) {
           console.error('ERROR AT LOGIN: ', response.error);
           alert(response.error);
