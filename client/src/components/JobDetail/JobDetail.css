@@ -1,0 +1,16 @@
+.job-detail-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 50%;
+  gap: 10px;
+}
+
+.job-detail-deadline {
+  display: flex;
+  gap: 5px;
+}
+
+.job-detail-buttons {
+  /* position: absolute; */
+  bottom: 10px;
+}
