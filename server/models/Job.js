@@ -9,133 +9,133 @@ const Company = require('./Company');
 const Faculty = require('./Faculty');
 
 const Job = db.define('Job', {
-  id: {
+  Id: {
     primaryKey: true,
     autoIncrement: true,
     type: DataTypes.INTEGER,
     allowNull: false
   },
-  identifier: {
+  Identifier: {
     type: DataTypes.UUIDV4,
     allowNull: true
   },
-  jobstatusid: {
+  JobStatusId: {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
       model: JobStatus,
-      key: 'id'
+      key: 'Id'
     }
   },
-  startsemesterid: {
+  StartSemesterId: {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
       model: Semester,
-      key: 'id'
+      key: 'Id'
     }
   },
-  startyear: {
+  StartYear: {
     type: DataTypes.INTEGER,
     allowNull: false
   },
-  maximumlength: {
+  MaximumLength: {
     type: DataTypes.INTEGER,
     allowNull: false
   },
-  deadline: {
+  Deadline: {
     type: DataTypes.DATE,
     allowNull: false
   },
-  address: {
+  Address: {
     type: DataTypes.TEXT,
     allowNull: false
   },
-  city: {
+  City: {
     type: DataTypes.STRING,
     allowNull: false
   },
-  provinceid: {
+  ProvinceId: {
     type: DataTypes.INTEGER,
     allowNull: true,
     references: {
       model: Province,
-      key: 'id'
+      key: 'Id'
     }
   },
-  stateid: {
+  StateId: {
     type: DataTypes.INTEGER,
     allowNull: true,
     references: {
       model: State,
-      key: 'id'
+      key: 'Id'
     }
   },
-  region: {
+  Region: {
     type: DataTypes.STRING,
     allowNull: true
   },
-  countryid: {
+  CountryId: {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
       model: Country,
-      key: 'id'
+      key: 'Id'
     }
   },
-  targetfacultyid: {
+  TargetFacultyId: {
     type: DataTypes.INTEGER,
     allowNull: true,
     references: {
       model: Faculty,
-      key: 'id'
+      key: 'Id'
     }
   },
-  companyid: {
+  CompanyId: {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
       model: Company,
-      key: 'id'
+      key: 'Id'
     }
   },
-  title: {
+  Title: {
     type: DataTypes.STRING,
     allowNull: false
   },
-  description: {
+  Description: {
     type: DataTypes.TEXT,
     allowNull: false
   },
-  contactname: {
+  ContactName: {
     type: DataTypes.STRING,
     allowNull: false
   },
-  contactsalutation: {
+  ContactSalutation: {
     type: DataTypes.STRING,
     allowNull: false
   },
-  contactemail: {
+  ContactEmail: {
     type: DataTypes.STRING,
     allowNull: false
   },
-  contactphone: {
+  ContactPhone: {
     type: DataTypes.STRING,
     allowNull: true
   }
 
 }, {
   freezeTableName: true,
-  tableName: 'job',
+  // tableName: 'job',
   timestamps: false
 });
 
-Job.belongsTo(JobStatus, { foreignKey: 'jobstatusid'});
-Job.belongsTo(Semester, { foreignKey: 'startsemesterid'});
-Job.belongsTo(Province, { foreignKey: 'provinceid'});
-Job.belongsTo(State, { foreignKey: 'stateid'});
-Job.belongsTo(Country, { foreignKey: 'countryid'});
-Job.belongsTo(Faculty, { foreignKey: 'targetfacultyid'});
-Job.belongsTo(Company, { foreignKey: 'companyid'});
+Job.belongsTo(JobStatus, { foreignKey: 'JobStatusId'});
+Job.belongsTo(Semester, { foreignKey: 'StartSemesterId'});
+Job.belongsTo(Province, { foreignKey: 'ProvinceId'});
+Job.belongsTo(State, { foreignKey: 'StateId'});
+Job.belongsTo(Country, { foreignKey: 'CountryId'});
+Job.belongsTo(Faculty, { foreignKey: 'TargetFacultyId'});
+Job.belongsTo(Company, { foreignKey: 'CompanyId'});
 
 module.exports = Job;

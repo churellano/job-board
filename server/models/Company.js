@@ -7,29 +7,29 @@ const State = require('./State');
 const Country = require('./Country');
 
 const Company = db.define('Company', {
-  id: {
+  Id: {
     primaryKey: true,
     autoIncrement: true,
     type: DataTypes.INTEGER,
     allowNull: false
   },
-  identifier: {
+  Identifier: {
     type: DataTypes.UUIDV4,
     allowNull: true
   },
-  name: {
+  Name: {
     type: DataTypes.STRING,
     allowNull: false
   },
-  address: {
+  Address: {
     type: DataTypes.TEXT,
     allowNull: false
   },
-  city: {
+  City: {
     type: DataTypes.STRING,
     allowNull: false
   },
-  provinceid: {
+  ProvinceId: {
     type: DataTypes.INTEGER,
     allowNull: true,
     references: {
@@ -37,7 +37,7 @@ const Company = db.define('Company', {
       key: 'Id'
     }
   },
-  stateid: {
+  StateId: {
     type: DataTypes.INTEGER,
     allowNull: true,
     references: {
@@ -45,11 +45,11 @@ const Company = db.define('Company', {
       key: 'Id'
     }
   },
-  region: {
+  Region: {
     type: DataTypes.STRING,
     allowNull: true
   },
-  countryid: {
+  CountryId: {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
@@ -57,22 +57,22 @@ const Company = db.define('Company', {
       key: 'Id'
     }
   },
-  contactemail: {
+  ContactEmail: {
     type: DataTypes.STRING,
     allowNull: false
   },
-  contactphone: {
+  ContactPhone: {
     type: DataTypes.STRING,
     allowNull: true
   }
 }, {
   freezeTableName: true,
-  tableName: 'company',
+  // tableName: 'company',
   timestamps: false
 });
 
-Company.belongsTo(Province, { foreignKey: 'provinceid' })
-Company.belongsTo(State, { foreignKey: 'stateid' })
-Company.belongsTo(Country, { foreignKey: 'countryid' })
+Company.belongsTo(Province, { foreignKey: 'ProvinceId' })
+Company.belongsTo(State, { foreignKey: 'StateId' })
+Company.belongsTo(Country, { foreignKey: 'CountryId' })
 
 module.exports = Company;

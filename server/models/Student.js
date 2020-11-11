@@ -4,32 +4,32 @@ const UserAccount = require('../models/UserAccount');
 const EmploymentStatus = require('./EmploymentStatus');
 
 const Student = db.define('Student', {
-  useraccountid: {
+  UserAccountId: {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
       model: UserAccount,
-      key: 'id'
+      key: 'Id'
     },
     primaryKey: true
   },
-  employmentstatusid: {
+  EmploymentStatusId: {
     type: DataTypes.INTEGER,
     defaultValue: 1,
     allowNull: false,
     references: {
       model: EmploymentStatus,
-      key: 'id'
+      key: 'Id'
     },
     primaryKey: true
   }
 }, {
   freezeTableName: true,
-  tableName: 'student',
+  // tableName: 'student',
   timestamps: false
 });
 
-Student.belongsTo(UserAccount, { foreignKey: 'useraccountid' });
-Student.belongsTo(EmploymentStatus, { foreignKey: 'employmentstatusid' });
+Student.belongsTo(UserAccount, { foreignKey: 'UserAccountId' });
+Student.belongsTo(EmploymentStatus, { foreignKey: 'EmploymentStatusId' });
 
 module.exports = Student;

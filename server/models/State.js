@@ -2,23 +2,23 @@ const { DataTypes } = require('sequelize');
 const db = require('../services/dbConnectService');
 
 const State = db.define('State', {
-  id: {
+  Id: {
     primaryKey: true,
     autoIncrement: true,
     type: DataTypes.INTEGER,
     allowNull: false
   },
-  name: {
+  Name: {
     type: DataTypes.STRING,
     allowNull: false
   },
-  abbreviation: {
+  Abbreviation: {
     type: DataTypes.STRING,
     allowNull: false
   }
 }, {
   freezeTableName: true,
-  tableName: 'state',
+  // tableName: 'state',
   timestamps: false
 });
 

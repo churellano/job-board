@@ -3,19 +3,19 @@ const db = require('../services/dbConnectService');
 // const Job = require('./Job');
 
 const JobStatus = db.define('JobStatus', {
-  id: {
+  Id: {
     primaryKey: true,
     autoIncrement: true,
     type: DataTypes.INTEGER,
     allowNull: false
   },
-  name: {
+  Name: {
     type: DataTypes.STRING,
     allowNull: false
   }
 }, {
   freezeTableName: true,
-  tableName: 'jobstatus',
+  // tableName: 'jobstatus',
   timestamps: false
 });
 

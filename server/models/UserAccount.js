@@ -3,56 +3,56 @@ const db = require('../services/dbConnectService');
 const Role = require('../models/Role');
 
 const UserAccount = db.define('UserAccount', {
-  id: {
+  Id: {
     primaryKey: true,
     autoIncrement: true,
     type: DataTypes.INTEGER,
     allowNull: false
   },
-  identifier: {
+  Identifier: {
     type: DataTypes.UUIDV4,
     allowNull: true
   },
-  roleid: {
+  RoleId: {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
       model: Role,
-      key: 'id'
+      key: 'Id'
     }
   },
-  username: {
+  Username: {
     type: DataTypes.STRING,
     unique: true,
     allowNull: false
   },
-  password: {
+  Password: {
     type: DataTypes.TEXT,
     allowNull: false
   },
-  firstname: {
+  FirstName: {
     type: DataTypes.STRING,
     allowNull: false
   },
-  lastname: {
+  LastName: {
     type: DataTypes.STRING,
     allowNull: false
   },
-  contactemail: {
+  ContactEmail: {
     type: DataTypes.STRING,
     unique: true,
     allowNull: false
   },
-  contactphone: {
+  ContactPhone: {
     type: DataTypes.STRING,
     unique: true
   }
 }, {
   freezeTableName: true,
-  tableName: 'useraccount',
+  // tableName: 'useraccount',
   timestamps: false
 });
 
-UserAccount.belongsTo(Role, { foreignKey: 'roleid' });
+UserAccount.belongsTo(Role, { foreignKey: 'RoleId' });
 
 module.exports = UserAccount;
