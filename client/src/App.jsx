@@ -62,6 +62,6 @@ function PrivateRoute({ children, ...rest }) {
 
 // Clear isLoggedIn when tab/window is closed
 window.onunload = function() {
-  store.remove('isLoggedIn');
+  // store.remove('isLoggedIn');
   return '';
 };
