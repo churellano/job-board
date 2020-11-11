@@ -1,3 +1,10 @@
+.Home {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    align-items: stretch;
+}
+
 .text {
     font-family: 'Roboto', sans-serif;
 }
