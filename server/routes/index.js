@@ -143,7 +143,7 @@ router.post('/login', (req, res) => {
         /** assign our jwt to the cookie */
         res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3001');
         res.cookie('jwt', token, { httpOnly: true, sameSite: 'none',  secure: true, maxAge: 3600000 });
-        res.status(200).send({ token, username: user.username });
+        res.status(200).send({ token, username: user.Username });
       });
     },
   )(req, res);
