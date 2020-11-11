@@ -38,7 +38,7 @@ const getById = async(id, callback) => {
 
 const getByUsername = async(username, callback) => {  
   try {
-    const userAccount = await db.findOne({ include: [Role], where: { username: username }});
+    const userAccount = await db.findOne({ include: [Role], where: { Username: username }});
     if (userAccount == null) {
       throw new Error('User with the provided username was not found.');
     }
@@ -58,18 +58,18 @@ const post = async(newUserAccount, callback) => {
     if (parseInt(roleId) === Roles.Student) {
       console.log('Creating student account');
       const userAccount = await db.create({
-        roleid: roleId,
-        username: username,
-        password: password,
-        firstname: firstName,
-        lastname: lastName,
-        contactemail: contactEmail,
-        contactphone: contactPhone
+        RoleId: roleId,
+        Username: username,
+        Password: password,
+        FirstName: firstName,
+        LastName: lastName,
+        ContactEmail: contactEmail,
+        ContactPhone: contactPhone
       });
   
       // Insert into student table
       await db.create({
-        useraccountid: userAccount.id,
+        UserAccountId: userAccount.id,
       });
       console.log('student', userAccount);
       callback(null, userAccount);
@@ -77,13 +77,13 @@ const post = async(newUserAccount, callback) => {
     } else if (parseInt(roleId) === Roles.Employer) {
       console.log('Creating employer account');
       const userAccount = await db.create({
-        roleid: roleId,
-        username: username,
-        password: password,
-        firstname: firstName,
-        lastname: lastName,
-        contactemail: contactEmail,
-        contactphone: contactPhone
+        RoleId: roleId,
+        Username: username,
+        Password: password,
+        FirstName: firstName,
+        LastName: lastName,
+        ContactEmail: contactEmail,
+        ContactPhone: contactPhone
       });
       console.log(userAccount);
       callback(null, userAccount);
